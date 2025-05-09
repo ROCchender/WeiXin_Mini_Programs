@@ -1,6 +1,6 @@
 {
   "libVersion": "3.8.2",
-  "projectname": "game",
+  "projectname": "gametest",
   "setting": {
     "urlCheck": false,
     "coverView": false,
@@ -15,8 +15,9 @@
     "useLanDebug": false,
     "showES6CompileOption": false,
     "compileHotReLoad": false,
-    "bigPackageSizeSupport": false,
+    "bigPackageSizeSupport": true,
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true
-  }
+  },
+  "condition": {}
 }

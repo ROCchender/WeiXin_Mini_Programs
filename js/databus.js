@@ -16,6 +16,19 @@ export default class DataBus {
   isGameOver = false; // 游戏是否结束
   pool = new Pool(); // 初始化对象池
 
+  // 简化难度设置
+  difficulties = {
+    easy: { speed: 2 },
+    normal: { speed: 4 },
+    hard: { speed: 6 }
+  }
+
+  // 默认难度
+  currentDifficulty = 'normal'
+
+  // 历史分数记录
+  scoreHistory = []
+
   constructor() {
     // 确保单例模式
     if (instance) return instance;
@@ -60,5 +73,38 @@ export default class DataBus {
     if (temp) {
       this.pool.recover('bullet', bullet); // 回收子弹到对象池
     }
+  }
+
+  // 从本地存储加载历史分数
+  loadScoreHistory() {
+    const scores = wx.getStorageSync('scoreHistory')
+    if (scores) {
+      this.scoreHistory = JSON.parse(scores)
+    }
+  }
+
+  // 保存分数到历史记录
+  saveScore(score) {
+    const scoreRecord = {
+      score: score,
+      difficulty: this.currentDifficulty,
+      date: new Date().toISOString()
+    }
+    
+    this.scoreHistory.push(scoreRecord)
+    
+    // 只保留前5名而不是10名
+    this.scoreHistory.sort((a, b) => b.score - a.score)
+    if (this.scoreHistory.length > 5) {
+      this.scoreHistory = this.scoreHistory.slice(0, 5)
+    }
+    
+    // 保存到本地存储
+    wx.setStorageSync('scoreHistory', JSON.stringify(this.scoreHistory))
+  }
+
+  // 根据当前难度获取速度
+  getSpeed() {
+    return this.difficulties[this.currentDifficulty].speed
   }
 }

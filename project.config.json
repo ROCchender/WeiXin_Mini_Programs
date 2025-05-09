@@ -27,8 +27,8 @@
     "useCompilerPlugins": false
   },
   "compileType": "game",
-  "libVersion": "latest",
-  "appid": "填写你的appid",
+  "libVersion": "3.8.2",
+  "appid": "wx5c609b4f825e11c8",
   "projectname": "quickstart",
   "condition": {
     "search": {

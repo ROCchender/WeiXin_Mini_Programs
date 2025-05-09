@@ -13,10 +13,13 @@ export default class Enemy extends Animation {
     super(ENEMY_IMG_SRC, ENEMY_WIDTH, ENEMY_HEIGHT);
   }
 
-  init() {
-    this.x = this.getRandomX();
+  init(speed) {
+    this.x = Math.random() * (SCREEN_WIDTH - this.width);
     this.y = -this.height;
-
+    
+    // 根据传入的速度参数或从databus获取速度
+    this.speed = speed || GameGlobal.databus.getSpeed();
+    
     this.isActive = true;
     this.visible = true;
     // 设置爆炸动画
@@ -46,9 +49,9 @@ export default class Enemy extends Animation {
 
     this.y += this.speed;
 
-    // 对象回收
+    
     if (this.y > SCREEN_HEIGHT + this.height) {
-      this.remove();
+      GameGlobal.databus.removeEnemy(this);
     }
   }
 
