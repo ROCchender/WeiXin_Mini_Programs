@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 游戏区域 -->
+  <view class="game-area" style="background-image: url({{backgroundImage}})">
+    <view class="grid-container">
+      <block wx:for="{{grid}}" wx:key="index">
+        <view class="cell {{item.type}}" style="left: {{item.x * cellSize}}px; top: {{item.y * cellSize}}px;">
+          <image wx:if="{{item.type === 'head'}}" src="/images/snake-head.png" class="snake-image {{item.direction}}" />
+          <image wx:if="{{item.type === 'food'}}" src="/images/food.png" class="food-image" />
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <view class="score-panel">
+    <text>得分: {{score}}</text>
+    <text>最高分: {{highScore}}</text>
+  </view>
+  
+  <view class="control-panel">
+    <button wx:if="{{!gameStarted}}" bindtap="startGame" class="start-btn">开始游戏</button>
+    <button wx:if="{{gameOver}}" bindtap="restartGame" class="restart-btn">重新开始</button>
+  </view>
+  
+  <!-- 方向控制按钮 -->
+  <view class="direction-controls" wx:if="{{gameStarted && !gameOver}}">
+    <view class="control-row">
+      <button class="control-btn up" bindtap="changeDirection" data-direction="up">↑</button>
+    </view>
+    <view class="control-row middle-row">
+      <button class="control-btn left" bindtap="changeDirection" data-direction="left">←</button>
+      <button class="control-btn pause" bindtap="togglePause">{{isPaused ? '▶' : '■'}}</button>
+      <button class="control-btn right" bindtap="changeDirection" data-direction="right">→</button>
+    </view>
+    <view class="control-row">
+      <button class="control-btn down" bindtap="changeDirection" data-direction="down">↓</button>
+    </view>
+  </view>
+  
+  <view class="game-over" wx:if="{{gameOver}}">
+    <text>游戏结束!</text>
+  </view>
+  
+  <view class="pause-text" wx:if="{{isPaused && !gameOver}}">
+    <text>游戏已暂停</text>
+  </view>
+</view>

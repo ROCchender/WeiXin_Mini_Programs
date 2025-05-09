@@ -1,0 +1,171 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* 游戏区域带背景图 */
+.game-area {
+  width: 350px;
+  height: 350px;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cell {
+  position: absolute;
+  width: 17.5px;
+  height: 17.5px;
+  box-sizing: border-box;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+.cell.body {
+  background-color: rgba(76, 175, 80, 0.8);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.snake-image, .food-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 蛇头方向样式 */
+.snake-image.up {
+  transform: rotate(-90deg);
+}
+.snake-image.down {
+  transform: rotate(90deg);
+}
+.snake-image.left {
+  transform: rotate(180deg);
+}
+.snake-image.right {
+  transform: rotate(0deg);
+}
+
+.score-panel {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  margin: 15px 0;
+  font-size: 16px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.control-panel {
+  margin: 15px 0;
+}
+
+.start-btn, .restart-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+}
+
+/* 方向控制按钮 */
+.direction-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px 0;
+  border-radius: 15px;
+}
+
+.control-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.middle-row {
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 0 25px;
+}
+
+/* 方向键 - 正方形 */
+.control-btn.up,
+.control-btn.down,
+.control-btn.left,
+.control-btn.right {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 暂停键 - 圆形且稍小 */
+.control-btn.pause {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #FF9800;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 按钮按下效果 */
+.control-btn:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.game-over {
+  margin-top: 15px;
+  font-size: 20px;
+  color: #f44336;
+  font-weight: bold;
+}
+
+.pause-text {
+  margin-top: 15px;
+  font-size: 20px;
+  color: #FF9800;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px 15px;
+  border-radius: 15px;
+}
