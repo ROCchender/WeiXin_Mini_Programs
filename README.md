@@ -1,5 +1,6 @@
 # 示例游戏
 ![alt text](image.png)
+
 示例相关说明可以查看微信程序官网手册，查阅[新手教程](https://developers.weixin.qq.com/minigame/dev/guide/develop/start.html)
 
 ## 源码目录介绍
